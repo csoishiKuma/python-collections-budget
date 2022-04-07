@@ -1,3 +1,4 @@
+from tracemalloc import stop
 from . import Expense
 
 class BudgetList():
@@ -29,5 +30,20 @@ def main():
 
     print("The count of all expenses: " + str(len(myBudgetList)))
 
+    for entry in myBudgetList:
+        print(entry)
+
 if __name__ == "__main__":
     main()
+
+def __iter__(self):
+    iter_e = iter(self.expenses)
+    iter_o = iter(self.overages)
+    return self
+
+def __next__(self):
+    try:
+        return self.iter_e
+    except:
+        stop = StopIteration
+        return self.iter_o
